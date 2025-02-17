@@ -165,13 +165,23 @@ bool lerBotaoCor2() {
 
 void tocarBuzzerAcerto(int duracao_ms) {
     gpio_put(BUZZER_ACERTO, 1);
-    sleep_ms(duracao_ms);
+    sleep_ms(duracao_ms/2);
     gpio_put(BUZZER_ACERTO, 0);
+    sleep_ms(duracao_ms/2);
 }
 
 void tocarBuzzerErro(int duracao_ms) {
     gpio_put(BUZZER_ERRO, 1);
-    sleep_ms(duracao_ms);
+    sleep_ms(duracao_ms/4);
+    gpio_put(BUZZER_ERRO, 0);
+     gpio_put(BUZZER_ERRO, 1);
+    sleep_ms(duracao_ms/4);
+    gpio_put(BUZZER_ERRO, 0);
+     gpio_put(BUZZER_ERRO, 1);
+    sleep_ms(duracao_ms/4);
+    gpio_put(BUZZER_ERRO, 0);
+     gpio_put(BUZZER_ERRO, 1);
+    sleep_ms(duracao_ms/4);
     gpio_put(BUZZER_ERRO, 0);
 }
 

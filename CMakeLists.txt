@@ -63,7 +63,11 @@ pico_enable_stdio_usb(neopixel_pio 1)
 
 # Add the standard library to the build
 target_link_libraries(neopixel_pio
-        pico_stdlib)
+        pico_stdlib
+        hardware_gpio
+        hardware_clocks
+        hardware_pwm
+        hardware_i2c   )
 
 # Add the standard include files to the build
 target_include_directories(neopixel_pio PRIVATE
@@ -74,7 +78,7 @@ target_include_directories(neopixel_pio PRIVATE
 target_link_libraries(neopixel_pio 
         hardware_pio
         hardware_clocks
-        )
+        hardware_pwm        )
 
 pico_add_extra_outputs(neopixel_pio)
 
