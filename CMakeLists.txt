@@ -42,27 +42,27 @@ set(PICO_BOARD pico CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(neopixel_pio C CXX ASM)
+project(MemoryMatrix C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(neopixel_pio neopixel_pio.c )
+add_executable(MemoryMatrix MemoryMatrix.c )
 
-pico_set_program_name(neopixel_pio "neopixel_pio")
-pico_set_program_version(neopixel_pio "0.1")
+pico_set_program_name(MemoryMatrix "MemoryMatrix")
+pico_set_program_version(MemoryMatrix "0.1")
 
 # Generate PIO header
-pico_generate_pio_header(neopixel_pio ${CMAKE_CURRENT_LIST_DIR}/ws2818b.pio)
+pico_generate_pio_header(MemoryMatrix ${CMAKE_CURRENT_LIST_DIR}/ws2818b.pio)
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(neopixel_pio 0)
-pico_enable_stdio_usb(neopixel_pio 1)
+pico_enable_stdio_uart(MemoryMatrix 0)
+pico_enable_stdio_usb(MemoryMatrix 1)
 
 # Add the standard library to the build
-target_link_libraries(neopixel_pio
+target_link_libraries(MemoryMatrix
         pico_stdlib
         hardware_gpio
         hardware_clocks
@@ -70,15 +70,15 @@ target_link_libraries(neopixel_pio
         hardware_i2c   )
 
 # Add the standard include files to the build
-target_include_directories(neopixel_pio PRIVATE
+target_include_directories(MemoryMatrix PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}
 )
 
 # Add any user requested libraries
-target_link_libraries(neopixel_pio 
+target_link_libraries(MemoryMatrix 
         hardware_pio
         hardware_clocks
         hardware_pwm        )
 
-pico_add_extra_outputs(neopixel_pio)
+pico_add_extra_outputs(MemoryMatrix)
 
